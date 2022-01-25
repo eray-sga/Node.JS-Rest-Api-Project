@@ -1,0 +1,28 @@
+const jwt = require("jsonwebtoken");
+const User = require("../models/userModel");
+
+const auth = async (req, res, next) => {
+  //authorization headerından gelen token değerini alıyoruz
+  try {
+    if (req.header("Authorization")) {
+      const token = req.header("Authorization").replace("Bearer ", "");
+      const sonuc = jwt.verify(token, "secretkey");
+
+      const bulunanUser = await User.findById({ _id: sonuc._id });
+
+      if (bulunanUser) {
+        req.user = bulunanUser;
+      } else {
+        throw new Error("Lütfen giriş yapın");
+      }
+
+      next();
+    } else {
+      throw new Error("Lütfen giriş yapın");
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+module.exports = auth;

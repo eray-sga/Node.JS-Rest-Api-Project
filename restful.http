@@ -1,0 +1,55 @@
+@base_url = http://localhost:3000/api
+GET {{base_url}}
+
+###
+GET {{base_url}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWVkYjQ0MzVhZDkyOGFhN2JkOWY5OTQiLCJpYXQiOjE2NDMxMTc0MTMsImV4cCI6MTY0MzEyMTAxM30.j4ia3kAEPW7Xn1yA77mpHVne2tq9KyRfLgjLJPJSYEA
+
+###
+GET {{base_url}}/users/5
+
+###
+POST {{base_url}}/users
+Content-Type: application/json
+
+{
+    "isim": "mehmet",
+    "email": "mehmet@deneme.com",
+    "userName": "mehmet",
+    "sifre": "123456"
+}
+
+###
+POST {{base_url}}/users/giris
+Content-Type: application/json
+
+{
+    "email": "mahmut@deneme.com",
+    "sifre": "123456"
+}
+
+###
+PATCH {{base_url}}/users/61edb4435ad928aa7bd9f994
+Content-Type: application/json
+
+{
+    "sifre": "123"
+}
+
+###
+PATCH {{base_url}}/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWVkYjQ0MzVhZDkyOGFhN2JkOWY5OTQiLCJlbWFpbCI6Im1haG11dEBkZW5lbWUuY29tIiwiYWt0aWYiOmZhbHNlLCJpYXQiOjE2NDMxMTI1ODksImV4cCI6MTY0MzExNjE4OX0.wfI9nspwCHDEOQ6b7ujyD7oElW2WtBWwamkOXX5s9Vg
+
+{
+    "isim":"maho",
+    "sifre": "1234567"
+}
+
+###
+DELETE {{base_url}}/users/61eafbee8e3d941cee624ca
+Content-Type: application/json
+
+###
+GET {{base_url}}/users/deleteAll
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWVkYjQ0MzVhZDkyOGFhN2JkOWY5OTQiLCJpYXQiOjE2NDMxMTg1NTAsImV4cCI6MTY0MzEyMjE1MH0.9egWbTa1iiA8pmLSReCE_6qz9njANqO8PeBTAwdPpO0
